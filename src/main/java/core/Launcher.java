@@ -29,6 +29,8 @@ public class Launcher {
 
         zipDF.printSchema();
 
+        //register as fiew
+        zipDF.createOrReplaceTempView("zipcodes");
         /*
         root
         |-- zip1: integer (nullable = true)
@@ -36,7 +38,7 @@ public class Launcher {
         |-- mi_to_zcta5: double (nullable = true)
         */
 
-        Dataset<Row> sqlDF = spark.sql("SELECT DISTINCT COUNT(*) FROM root GROUP BY zip1");
+        Dataset<Row> sqlDF = spark.sql("SELECT DISTINCT COUNT(*) FROM zipcodes GROUP BY zip1");
         sqlDF.show();
 
 
