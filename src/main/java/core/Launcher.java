@@ -38,7 +38,7 @@ public class Launcher {
         |-- mi_to_zcta5: double (nullable = true)
         */
 
-        Dataset<Row> sqlDF = spark.sql("SELECT zip1, DISTINCT COUNT(*) FROM zipcodes GROUP BY zip1");
+        Dataset<Row> sqlDF = spark.sql("SELECT mi_to_zcta5, COUNT(*) AS count FROM zipcodes GROUP BY mi_to_zcta5 ORDER BY COUNT(*) DESC");
         sqlDF.show();
 
 
